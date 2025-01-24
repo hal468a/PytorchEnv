@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  pytorch:
+    image: pytorch/pytorch:2.5.1-cuda12.4-cudnn9-runtime
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    volumes:
+      - ./src:/src
+    working_dir: /src
+    command: python gpuTest.py
+    network_mode: "host"
+    restart: "no"
